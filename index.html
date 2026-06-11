@@ -4,66 +4,434 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The 413 Movement | Survival to Sovereignty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <style>
-    /* Premium Dark Palette & Structural Typography */
-    html, body { background-color: #0b0b0b !important; color: #d8d8d8; font-family: 'Georgia', 'Times New Roman', serif; margin: 0; padding: 0; line-height: 1.9; }
-    .navbar { background-color: #0b0b0b; border-bottom: 1px solid #1a1a1a; position: fixed; top: 0; width: 100%; z-index: 1000; height: 60px; font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-sizing: border-box; }
-    .nav-links { display: flex; gap: 20px; align-items: center; }
-    .nav-links a { color: #ffffff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-    /* Dropdown Styles */
+    :root {
+      --black: #0b0b0b;
+      --dark: #111111;
+      --border: #1a1a1a;
+      --border-mid: #2a2a2a;
+      --text: #d8d8d8;
+      --text-muted: #888888;
+      --text-dim: #555555;
+      --white: #ffffff;
+      --copper: #b47a4f;
+      --copper-dark: #8a5c39;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--black);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      line-height: 1.9;
+      font-size: 19px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: var(--black);
+      border-bottom: 1px solid var(--border);
+      position: fixed; top: 0; width: 100%;
+      z-index: 1000; height: 68px;
+      display: flex; align-items: center;
+    }
+    .nav-container {
+      width: 100%; max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 40px;
+    }
+    .brand-logo {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 700; letter-spacing: 3px; font-size: 0.95rem;
+      color: var(--white); text-transform: uppercase; text-decoration: none;
+    }
     .dropdown { position: relative; display: inline-block; }
-    .dropbtn { background-color: transparent; color: #ffffff; border: none; cursor: pointer; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-    .dropdown-content { display: none; position: absolute; right: 0; background-color: #1a1a1a; min-width: 160px; box-shadow: 0px 8px 16px rgba(0,0,0,0.5); z-index: 1; }
-    .dropdown-content a { color: #ffffff; padding: 12px 16px; text-decoration: none; display: block; font-size: 0.8rem; }
+    .dropbtn {
+      background-color: transparent; color: var(--text);
+      padding: 8px 18px; font-size: 0.8rem;
+      border: 1px solid var(--border-mid); cursor: pointer;
+      text-transform: uppercase; letter-spacing: 2px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      transition: all 0.3s ease;
+    }
+    .dropbtn:hover { border-color: var(--copper); color: var(--white); }
+    .dropdown-content {
+      display: none; position: absolute; right: 0;
+      background-color: var(--dark); min-width: 240px;
+      box-shadow: 0px 16px 40px rgba(0,0,0,0.8);
+      border: 1px solid var(--border); z-index: 1010;
+    }
+    .dropdown-content a {
+      color: var(--text-muted); padding: 13px 20px;
+      text-decoration: none; display: block;
+      font-size: 0.85rem; font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 1px; text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .dropdown-content a:last-child { border-bottom: none; }
+    .dropdown-content a:hover { background-color: #0f0f0f; color: var(--copper); padding-left: 28px; }
     .dropdown:hover .dropdown-content { display: block; }
-    
-    .container { max-width: 850px; margin: 80px auto 0; padding: 20px; }
-    h1 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 3rem; color: #ffffff; margin-bottom: 20px; }
-    .hero-destination { font-size: 1.3rem; margin-top: 25px; }
-    .hero-destination span { font-weight: bold; color: #b47a4f; }
-    .content-section { padding: 60px 0; }
-    h2 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.8rem; color: #ffffff; border-bottom: 1px solid #1a1a1a; padding-bottom: 10px; }
+
+    /* HERO */
+    .hero-banner {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 100px 20px 80px;
+      position: relative; border-bottom: 1px solid var(--border); overflow: hidden;
+    }
+    .hero-banner::before {
+      content: '413'; position: absolute;
+      font-size: 40vw; font-weight: 700;
+      color: rgba(255,255,255,0.018);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: -10px; user-select: none; pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+    .hero-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--copper);
+      margin-bottom: 30px; display: block;
+    }
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6rem); font-weight: 300;
+      color: var(--white); line-height: 1.1;
+      margin-bottom: 30px; letter-spacing: -1px;
+    }
+    .hero-divider { width: 60px; height: 1px; background: var(--copper); margin: 30px auto; }
+    .hero-subtitle {
+      font-size: 1.35rem; color: var(--text-muted);
+      font-style: italic; font-weight: 300;
+      max-width: 560px; margin: 0 auto 50px; line-height: 1.7;
+    }
+    .hero-launch {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--text-dim); margin-top: 20px;
+    }
+    .hero-launch span { color: var(--copper); }
+
+    /* SECTIONS */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 30px; }
+    .content-section { padding: 110px 0; border-bottom: 1px solid var(--border); }
+    .content-section:last-child { border-bottom: none; }
+    .section-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.7rem; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--copper);
+      margin-bottom: 20px; display: block;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 400;
+      color: var(--white); margin-bottom: 50px; line-height: 1.2;
+    }
+    p { margin-bottom: 25px; line-height: 1.9; }
+
+    /* PHILOSOPHY */
+    .philosophy-lead {
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--white); margin-bottom: 30px; line-height: 1.6;
+    }
+    .philosophy-quote {
+      margin: 60px 0; padding: 40px 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      font-size: 1.5rem; font-style: italic;
+      text-align: center; color: var(--text-muted); line-height: 1.6;
+    }
+    .philosophy-quote cite {
+      display: block; margin-top: 15px; font-size: 0.85rem;
+      font-style: normal; font-family: 'Helvetica Neue', Arial, sans-serif;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--copper);
+    }
+
+    /* PILLARS */
+    .pillar-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin-top: 10px; background-color: var(--border);
+    }
+    .pillar-card {
+      background-color: var(--black); padding: 50px 40px;
+      transition: background-color 0.3s ease;
+    }
+    .pillar-card:hover { background-color: #0f0f0f; }
+    .pillar-number {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.7rem; letter-spacing: 3px;
+      color: var(--copper); text-transform: uppercase;
+      margin-bottom: 15px; display: block;
+    }
+    .pillar-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem; font-weight: 500;
+      color: var(--white); margin-bottom: 15px;
+    }
+    .pillar-card p { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 0; }
+
+    /* FOUNDER */
+    .founder-text p { font-size: 1.15rem; }
+
+    /* WHY 413 */
+    .why413-statement {
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--white); line-height: 1.5; margin-bottom: 40px;
+    }
+    .why413-number {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 8rem; font-weight: 700;
+      color: transparent; -webkit-text-stroke: 1px var(--border-mid);
+      line-height: 1; margin-bottom: 40px; display: block; letter-spacing: -5px;
+    }
+    .why413-meanings {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; margin: 50px 0;
+    }
+    .meaning-card { border-left: 1px solid var(--copper); padding-left: 25px; }
+    .meaning-card h3 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--copper); margin-bottom: 12px;
+    }
+    .meaning-card p { font-size: 1.1rem; color: var(--text); margin-bottom: 0; line-height: 1.7; }
+    .why413-close { font-size: 1.25rem; font-style: italic; color: var(--text-muted); margin-top: 10px; }
+    .why413-close strong { color: var(--white); font-style: normal; }
+
+    /* WHERE TO BUY */
+    .launch-announcement {
+      background-color: var(--dark); border: 1px solid var(--border-mid);
+      padding: 50px; text-align: center; margin-bottom: 60px;
+    }
+    .launch-date {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--copper);
+      margin-bottom: 15px; display: block;
+    }
+    .launch-title { font-size: 2rem; color: var(--white); font-weight: 400; margin-bottom: 15px; }
+    .launch-sub { font-size: 1rem; color: var(--text-muted); font-style: italic; }
+    .retailer-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+    .retailer-btn {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: inline-block; padding: 10px 22px;
+      background-color: transparent; color: var(--text-muted);
+      border: 1px solid var(--border-mid); text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .retailer-note { font-size: 0.85rem; color: var(--text-dim); font-style: italic; margin-top: 20px; }
+
+    /* CONNECT */
+    .connect-grid { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; }
+    .connect-btn {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: inline-block; padding: 12px 28px;
+      text-decoration: none; font-size: 0.8rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      transition: all 0.3s ease; border: 1px solid var(--border-mid); color: var(--text);
+    }
+    .connect-btn:hover { border-color: var(--copper); color: var(--white); background-color: #0f0f0f; }
+    .connect-btn.primary { background-color: var(--copper); border-color: var(--copper); color: var(--white); }
+    .connect-btn.primary:hover { background-color: var(--copper-dark); border-color: var(--copper-dark); }
+
+    /* MEDIA */
+    .contact-box {
+      border: 1px solid var(--border); padding: 50px;
+      text-align: center; margin-top: 60px;
+    }
+    .contact-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.7rem; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--text-dim);
+      margin-bottom: 20px; display: block;
+    }
+    .email-link {
+      color: var(--copper); font-size: 1.2rem;
+      text-decoration: none; font-weight: 500;
+      transition: color 0.3s ease; display: block; margin-top: 10px;
+    }
+    .email-link:hover { color: var(--white); }
+
+    /* FOOTER */
+    .site-footer {
+      background-color: var(--black); border-top: 1px solid var(--border);
+      text-align: center; padding: 50px 20px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem; color: var(--text-dim); letter-spacing: 1px;
+    }
+    .footer-brand {
+      color: var(--text-muted); font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      display: block; margin-bottom: 10px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      .nav-container { padding: 0 20px; }
+      .hero-title { font-size: 3rem; }
+      .pillar-grid { grid-template-columns: 1fr; }
+      .why413-meanings { grid-template-columns: 1fr; }
+      .pillar-card { padding: 35px 25px; }
+      .launch-announcement { padding: 35px 25px; }
+      .contact-box { padding: 35px 25px; }
+      h2 { font-size: 2rem; }
+      .why413-number { font-size: 5rem; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="navbar">
-    <div class="brand-logo" style="color: #ffffff; font-weight: 700; letter-spacing: 2px;">THE 413 MOVEMENT</div>
-    <div class="nav-links">
-      <a href="https://leighvanbaalen.substack.com">Substack</a>
-      <a href="https://www.youtube.com/@The413Movement">YouTube</a>
+    <div class="nav-container">
+      <a href="#" class="brand-logo">The 413 Movement</a>
       <div class="dropdown">
-        <button class="dropbtn">The Books</button>
+        <button class="dropbtn">Menu</button>
         <div class="dropdown-content">
-          <a href="#">Amazon KDP</a>
-          <a href="#">IngramSpark</a>
-          <a href="#">Barnes & Noble</a>
-          <a href="#">Walmart</a>
-          <a href="#">Exclusive Books</a>
-          <a href="#">eBay</a>
-          <a href="#">Browns</a>
+          <a href="#philosophy">The Philosophy</a>
+          <a href="#pillars">The Four Pillars</a>
+          <a href="#founder">The Founder</a>
+          <a href="#why413">Why 413?</a>
+          <a href="#purchase">Where to Buy</a>
+          <a href="#connect">Connect</a>
+          <a href="#media">Media &amp; Bookings</a>
         </div>
       </div>
     </div>
   </nav>
 
+  <header class="hero-banner">
+    <div class="hero-content">
+      <span class="hero-label">A memoir. A movement. A reckoning.</span>
+      <h1 class="hero-title">Survival to<br>Sovereignty</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-subtitle">For those who have survived the fire but refuse to live in the ashes.</p>
+      <p class="hero-launch">Available <span>29 June 2026</span></p>
+    </div>
+  </header>
+
   <main class="container">
-    <section class="hero-banner">
-      <h1>Because survival is not the destination. The destination is sovereignty.</h1>
+
+    <section id="philosophy" class="content-section">
+      <span class="section-label">The Philosophy</span>
+      <h2>What happened to you matters.<br>It does not get to define you.</h2>
+      <p class="philosophy-lead">Life leaves wreckages. Trauma. Loss. Burnout. Betrayal. Illness. Caregiving. Failure. Most people are handed a script that says: survive, recover, move on. The 413 Movement rejects that script.</p>
+      <p>Survival is the baseline. It is not the destination. The destination is sovereignty — the complete, unapologetic reclamation of your identity, your voice, and your future.</p>
+      <p>This is not about toxic positivity. It is not about finding the silver lining. It is about doing the hard, honest, unfiltered work of rebuilding from the inside out — and refusing to pretend that the wreckage wasn't real.</p>
+      <div class="philosophy-quote">
+        The unseen finally wants to be seen.<br>The unheard finally wants to be heard.<br>And I have a roar ready for just the right moment.
+        <cite>— Leigh van Baalen</cite>
+      </div>
+      <p>This is that moment.</p>
     </section>
 
-    <section id="manifesto" class="content-section">
-      <h3>4. Unfiltered Truth</h3>
-      <p>The courage to see clearly and speak honestly.</p>
-      <p>No masks. No performance. No toxic positivity. To find your own truth. The truth that you can live with. Without the expectations of others.</p>
+    <section id="pillars" class="content-section">
+      <span class="section-label">The Framework</span>
+      <h2>The Four Pillars</h2>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <span class="pillar-number">Pillar One</span>
+          <h3>Wreckage</h3>
+          <p>Acknowledging the full reality of the crisis. Not minimising it. Not performing recovery. Looking it directly in the face and naming it for what it is.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-number">Pillar Two</span>
+          <h3>Resilience</h3>
+          <p>The persistence to move through the aftermath. Not bouncing back — there is no back. Moving forward, even when forward is just one breath at a time.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-number">Pillar Three</span>
+          <h3>Sovereignty</h3>
+          <p>Reclaiming complete ownership of your identity and your future. Moving from surviving to creating. From victim to author of your own next chapter.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-number">Pillar Four</span>
+          <h3>Unfiltered Truth</h3>
+          <p>No masks. No performance. No toxic positivity. Only the brutal, honest truth that sets you free to build a life entirely on your own terms.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="start-here" class="content-section">
-      <h2>Start Here: The Way Out</h2>
-      <p>For those who have survived the fire but refuse to live in the ashes. Discover the books, broadcasts, and unfiltered truths behind The 413 Movement.</p>
-      <p>Because survival is not the destination. Sovereignty is...</p>
+    <section id="founder" class="content-section">
+      <span class="section-label">The Founder</span>
+      <h2>Leigh van Baalen</h2>
+      <div class="founder-text">
+        <p class="philosophy-lead">Author. Speaker. Founder of The 413 Movement.</p>
+        <p>Leigh van Baalen spent 30 years in corporate South Africa — across telecoms, retail, IT, mining, and ERP transformation — before life handed her something no boardroom had prepared her for.</p>
+        <p>In 2018, her son Kelvin was involved in a paragliding accident that left him fighting for his life. What followed was 413 days in a burns unit — 413 days of living in hospital corridors, navigating a broken system, watching someone you love rebuild from ash.</p>
+        <p>From that experience came a memoir, a movement, and 413 unfiltered truths that Leigh spent eight years distilling into <em>Survival to Sovereignty</em>.</p>
+        <p>Her voice is direct. Her perspective is hard-won. Her refusal to pretend it was anything other than what it was — is exactly what makes her worth listening to.</p>
+      </div>
     </section>
+
+    <section id="why413" class="content-section">
+      <span class="section-label">The Origin</span>
+      <h2>Why 413?</h2>
+      <span class="why413-number">413</span>
+      <p class="why413-statement">It is not simply a number. It never was.</p>
+      <div class="why413-meanings">
+        <div class="meaning-card">
+          <h3>The Days</h3>
+          <p>413 is the exact number of days Leigh's son spent in a burns unit following a paragliding accident that changed everything. Every single one of those days counted.</p>
+        </div>
+        <div class="meaning-card">
+          <h3>The Truths</h3>
+          <p>413 is also the number of unfiltered, unspoken truths that emerged from living through those days — truths that could only have been found in that fire.</p>
+        </div>
+      </div>
+      <p class="why413-close"><strong>One number. Two meanings.</strong> A movement built from both.</p>
+    </section>
+
+    <section id="purchase" class="content-section">
+      <span class="section-label">The Book</span>
+      <h2>Where to Buy</h2>
+      <div class="launch-announcement">
+        <span class="launch-date">Official Launch Date</span>
+        <p class="launch-title">29 June 2026</p>
+        <p class="launch-sub">Eight years to the day. Purchase links go live on launch day.</p>
+      </div>
+      <p>Available globally across the following platforms from 29 June 2026:</p>
+      <div class="retailer-grid">
+        <span class="retailer-btn">Amazon</span>
+        <span class="retailer-btn">Exclusive Books (SA)</span>
+        <span class="retailer-btn">Barnes &amp; Noble</span>
+        <span class="retailer-btn">Walmart</span>
+        <span class="retailer-btn">Browns Books (UK)</span>
+        <span class="retailer-btn">eBay</span>
+      </div>
+      <p class="retailer-note">Links activate on launch day, 29 June 2026.</p>
+    </section>
+
+    <section id="connect" class="content-section">
+      <span class="section-label">Stay Connected</span>
+      <h2>Join the Movement</h2>
+      <p>Follow the conversation. Subscribe for unfiltered insights delivered directly to your inbox. No performance. No fluff. Just truth.</p>
+     <div class="connect-grid">
+  <a href="https://413unfilteredtruths.substack.com" target="_blank" class="connect-btn primary">Substack</a>
+  <a href="https://www.youtube.com/@413unfilteredtruths" target="_blank" class="connect-btn">YouTube</a>
+  <a href="https://www.linkedin.com/in/leigh-van-baalen-2ba8a558" target="_blank" class="connect-btn">LinkedIn</a>
+</div>
+    </section>
+
+    <section id="media" class="content-section">
+      <span class="section-label">Media &amp; Bookings</span>
+      <h2>Speaking, Interviews &amp; Media</h2>
+      <p>Leigh van Baalen is available for keynote speaking, podcast interviews, corporate wellbeing events, and media engagements on the following themes:</p>
+      <p>The hidden aftermath of trauma &mdash; Personal sovereignty and identity reclamation &mdash; Caregiving and systemic failure &mdash; Unfiltered leadership and authentic communication &mdash; Resilience beyond toxic positivity.</p>
+      <div class="contact-box">
+        <span class="contact-label">Serious enquiries only</span>
+        <p>For bookings, media requests, and speaking engagements:</p>
+        <a href="mailto:leighvanbaalen.author@gmail.com" class="email-link">leighvanbaalen.author@gmail.com</a>
+      </div>
+    </section>
+
   </main>
+
+  <footer class="site-footer">
+    <span class="footer-brand">The 413 Movement</span>
+    <p>&copy; 2026 Leigh van Baalen. All rights reserved.</p>
+    <p style="margin-top:8px;">413unfilteredtruths.com</p>
+  </footer>
 
 </body>
 </html>
