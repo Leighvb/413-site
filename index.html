@@ -171,6 +171,28 @@
     .pillar-card p { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 0; }
 
     /* FOUNDER */
+    .founder-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .founder-photo-wrap {
+      position: relative;
+    }
+    .founder-photo {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) contrast(1.05);
+    }
+    .founder-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
+      pointer-events: none;
+    }
     .founder-text p { font-size: 1.15rem; }
 
     /* WHY 413 */
@@ -223,7 +245,41 @@
     .retailer-note { font-size: 0.85rem; color: var(--text-dim); font-style: italic; margin-top: 20px; }
 
     /* CONNECT */
-    .connect-placeholder { padding: 20px 0; color: var(--text-muted); font-style: italic; }
+    .connect-links { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+    .connect-btn {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: inline-block; padding: 14px 28px;
+      text-decoration: none; font-size: 0.8rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      transition: all 0.3s ease; width: fit-content;
+    }
+    .connect-btn-primary {
+      background-color: var(--copper); color: var(--white);
+    }
+    .connect-btn-primary:hover { background-color: var(--copper-dark); }
+    .connect-btn-secondary {
+      background-color: transparent; color: var(--text-muted);
+      border: 1px solid var(--border-mid);
+    }
+    .connect-btn-secondary:hover { border-color: var(--copper); color: var(--white); }
+
+    /* TALKS */
+    .talks-grid { display: flex; flex-direction: column; gap: 2px; margin: 40px 0; background-color: var(--border); }
+    .talk-card {
+      background-color: var(--black); padding: 45px 50px;
+      transition: background-color 0.3s ease;
+    }
+    .talk-card:hover { background-color: #0f0f0f; }
+    .talk-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem; font-weight: 500;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .talk-tagline {
+      font-size: 1rem; font-style: italic;
+      color: var(--copper); margin-bottom: 15px; display: block;
+    }
+    .talk-card p { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 0; }
 
     /* MEDIA */
     .contact-box {
@@ -267,6 +323,9 @@
       .contact-box { padding: 35px 25px; }
       h2 { font-size: 2rem; }
       .why413-number { font-size: 5rem; }
+      .founder-layout { grid-template-columns: 1fr; gap: 40px; }
+      .founder-photo-wrap { max-width: 280px; }
+      .talk-card { padding: 35px 25px; }
     }
   </style>
 </head>
@@ -345,12 +404,17 @@
     <section id="founder" class="content-section">
       <span class="section-label">The Founder</span>
       <h2>Leigh van Baalen</h2>
-      <div class="founder-text">
-        <p class="philosophy-lead">Author. Speaker. Founder of The 413 Movement.</p>
-        <p>Leigh van Baalen spent 30 years in corporate South Africa — across telecoms, retail, IT, mining, and ERP transformation — before life handed her something no boardroom had prepared her for.</p>
-        <p>In 2018, her son Kelvin was involved in a paragliding accident that left him fighting for his life. What followed was 413 days in a burns unit — 413 days of living in hospital corridors, navigating a broken system, watching someone you love rebuild from ash.</p>
-        <p>From that experience came a memoir, a movement, and 413 unfiltered truths that Leigh spent eight years distilling into <em>Survival to Sovereignty</em>.</p>
-        <p>Her voice is direct. Her perspective is hard-won. Her refusal to pretend it was anything other than what it was — is exactly what makes her worth listening to.</p>
+      <div class="founder-layout">
+        <div class="founder-photo-wrap">
+          <img src="author_pic.png" alt="Leigh van Baalen — Author, Speaker, Founder of The 413 Movement" class="founder-photo">      
+        </div>
+        <div class="founder-text">
+          <p class="philosophy-lead">Author. Speaker. Founder of The 413 Movement.</p>
+          <p>Leigh van Baalen spent 30 years in corporate South Africa — across telecoms, retail, IT, mining, and ERP transformation — before life handed her something no boardroom had prepared her for.</p>
+          <p>In 2018, her son Kelvin was involved in a paragliding accident that left him fighting for his life. What followed was 413 days in a burns unit — 413 days of living in hospital corridors, navigating a broken system, watching someone you love rebuild from ash.</p>
+          <p>From that experience came a memoir, a movement, and 413 unfiltered truths that Leigh spent eight years distilling into <em>Survival to Sovereignty</em>.</p>
+          <p>Her voice is direct. Her perspective is hard-won. Her refusal to pretend it was anything other than what it was — is exactly what makes her worth listening to.</p>
+        </div>
       </div>
     </section>
 
@@ -395,14 +459,37 @@
     <section id="connect" class="content-section">
       <span class="section-label">Stay Connected</span>
       <h2>Join the Movement</h2>
-      <p class="connect-placeholder">Links coming soon.</p>
+      <p>Follow the conversation. Subscribe for unfiltered insights delivered directly to your inbox. No performance. No fluff. Just truth.</p>
+      <div class="connect-links">
+        <a href="https://substack.com/@leighvanbaalen" target="_blank" class="connect-btn connect-btn-primary">Substack</a>
+        <a href="https://www.youtube.com/@the413movement" target="_blank" class="connect-btn connect-btn-secondary">YouTube</a>
+        <a href="https://www.linkedin.com/in/leighvanbaalen" target="_blank" class="connect-btn connect-btn-secondary">LinkedIn</a>
+      </div>
     </section>
 
     <section id="media" class="content-section">
       <span class="section-label">Media &amp; Bookings</span>
       <h2>Speaking, Interviews &amp; Media</h2>
-      <p>Leigh van Baalen is available for keynote speaking, podcast interviews, corporate wellbeing events, and media engagements on the following themes:</p>
-      <p>The hidden aftermath of trauma &mdash; Personal sovereignty and identity reclamation &mdash; Caregiving and systemic failure &mdash; Unfiltered leadership and authentic communication &mdash; Resilience beyond toxic positivity.</p>
+      <p>Leigh van Baalen is available for keynote speaking, corporate wellbeing events, podcast interviews, and media engagements. She speaks from hard-won experience — not theory.</p>
+
+      <div class="talks-grid">
+        <div class="talk-card">
+          <h3>From Survival to Sovereignty</h3>
+          <span class="talk-tagline">For anyone still living in the ashes of what broke them.</span>
+          <p>What happens after the crisis ends and everyone goes home? This talk dismantles the myth of bouncing back and replaces it with a framework for reclaiming your identity, your voice, and your future — unapologetically. For corporate resilience programmes, wellbeing events, and leadership audiences.</p>
+        </div>
+        <div class="talk-card">
+          <h3>The Unfiltered Leader</h3>
+          <span class="talk-tagline">For teams tired of performing wellness.</span>
+          <p>Authentic leadership isn't built in the good times. It's forged in the wreckage. This talk challenges leaders to drop the mask, face what's real, and build cultures where hard truth is safe to speak. For HR, executive, and leadership development audiences.</p>
+        </div>
+        <div class="talk-card">
+          <h3>413 Days</h3>
+          <span class="talk-tagline">For anyone who has ever kept the world from knowing how close to the edge they were.</span>
+          <p>A raw account of 413 days as a caregiver in a burns unit — navigating systemic failure, invisible collapse, and the quiet sovereignty that can only be found when everything else falls away. For healthcare, trauma, and community audiences.</p>
+        </div>
+      </div>
+
       <div class="contact-box">
         <span class="contact-label">Serious enquiries only</span>
         <p>For bookings, media requests, and speaking engagements:</p>
